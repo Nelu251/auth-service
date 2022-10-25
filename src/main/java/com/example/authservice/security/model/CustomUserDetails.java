@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserDetails implements UserDetails {
 
-    private Long id;
+    private String id;
 
     private String email;
 
@@ -38,7 +38,7 @@ public class CustomUserDetails implements UserDetails {
         return email;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

@@ -29,8 +29,6 @@ public class UserService {
             .email(userDto.getEmail())
             .build();
 
-        user.setEmail(userDto.getEmail());
-
         User registeredUser = userRepository.save(user);
 
         log.info("IN register - user: {} successfully registered", registeredUser);

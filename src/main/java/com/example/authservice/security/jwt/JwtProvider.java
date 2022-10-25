@@ -21,12 +21,12 @@ public class JwtProvider {
     @Value("${jwt.token.secret}")
     private String secret;
 
-    public String generateToken(String email, String fullName) {
+    public String generateToken(String email, String name) {
         Date date = Date.from(LocalDate.now().plusDays(15).atStartOfDay(ZoneId.systemDefault()).toInstant());
         return Jwts.builder()
                 .setSubject(email)
                 .setExpiration(date)
-                .claim("fullName", fullName)
+                .claim("name", name)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }

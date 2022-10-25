@@ -17,13 +17,13 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/home/register")
+    @PostMapping("/register")
     public ResponseEntity<String> registerUser(HttpServletRequest request, @RequestBody UserDto userDto) throws Exception {
 
         String email = userDto.getEmail();
         String password = userDto.getPassword();
 
-        UserDto newUser = UserDto.builder().email(email).password(password).build();
+        UserDto newUser = UserDto.builder().email(email).password(password).name(userDto.getName()).build();
 
         userService.register(newUser);
 
@@ -32,7 +32,7 @@ public class UserController {
         return this.login(newUser);
     }
 
-    @PostMapping("/home/login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserDto request) {
         return ResponseEntity.ok(userService.login(request));
     }
